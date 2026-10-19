@@ -1,0 +1,5 @@
+identificador;nome;vinculo;inicio;fim;cessao;documento;observacao
+maria@empresa.com.br|maria.silva@gmail.com;Maria Silva;clt;01/03/2022;;sim;Contrato de trabalho + aditivo de PI (2022-03-01);
+joao.dev@gmail.com;João Dev;pj;01/08/2023;31/07/2024;nao;Contrato de prestação de serviços nº 12/2023;
+joao.dev@gmail.com;João Dev;pj;01/08/2024;;sim;Contrato nº 07/2024 com cláusula de cessão;renovação
+dev@agenciaexemplo.com.br;Agência Exemplo Ltda;agencia;15/01/2023;15/12/2023;sim;Contrato de desenvolvimento 2023;pedir contratos internos da agência

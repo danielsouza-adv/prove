@@ -1,0 +1,27 @@
+# Copie para .github/workflows/prove.yml no repositório do produto.
+# Roda o PROVE a cada push na branch principal e guarda o relatório como artefato.
+name: PROVE
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # histórico completo: sem isso a autoria fica incompleta
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Baixar PROVE
+        run: curl -fsSLO https://raw.githubusercontent.com/SEU-USUARIO/prove/main/prove_scan.py
+      - name: Rodar varredura
+        run: python3 prove_scan.py . --saida prove-saida --distribuicao saas --ferramentas-autorizadas claude,copilot
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prove-relatorio
+          path: prove-saida/

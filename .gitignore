@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+prove_dados.json
+prove_relatorio.md
+prove_sbom.cdx.json
+prove_hashes.sha256
+prove_inpi_fonte.zip
+contratos.csv
