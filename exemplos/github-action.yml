@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Baixar PROVE
-        run: curl -fsSLO https://raw.githubusercontent.com/danielsouza458-debug/prove/main/prove_scan.py
+        run: curl -fsSLO https://raw.githubusercontent.com/danielsouza-adv/prove/main/prove_scan.py
       - name: Rodar varredura
         run: python3 prove_scan.py . --saida prove-saida --distribuicao saas --ferramentas-autorizadas claude,copilot
       - uses: actions/upload-artifact@v4

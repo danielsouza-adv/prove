@@ -109,6 +109,6 @@ python3 -m unittest discover -s tests -v    # testes
 python3 exemplos/gerar_exemplo.py           # regenera o relatório de exemplo
 ```
 
-Repositório: https://github.com/danielsouza458-debug/prove
+Repositório: https://github.com/danielsouza-adv/prove
 
 Licença: MIT (veja [LICENSE](LICENSE)).
