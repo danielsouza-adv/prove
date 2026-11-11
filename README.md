@@ -100,7 +100,7 @@ A metodologia e os códigos de achado estão em [`docs/METODOLOGIA.md`](docs/MET
 O relatório do PROVE é o diagnóstico. O **Laudo de Proveniência** é a análise documental dos contratos, da política de IA e das licenças, com parecer assinado para apresentar a investidor, comprador ou contratante.
 
 **D'Souza Advocacia Empresarial** · Dr. Daniel de Souza · OAB/DF 71.124
-danielssouza.com · (61) 98379-0033
+danielssouza.com · (61) 99878-0564
 
 ## Desenvolvimento
 

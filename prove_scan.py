@@ -61,7 +61,7 @@ VERSAO = "2.0.0"
 
 ESCRITORIO = "D'Souza Advocacia Empresarial"
 RESPONSAVEL = "Dr. Daniel de Souza · OAB/DF 71.124"
-CONTATO = "danielssouza.com | (61) 98379-0033"
+CONTATO = "danielssouza.com | (61) 99878-0564"
 
 # ---------------------------------------------------------------------------
 # Constantes

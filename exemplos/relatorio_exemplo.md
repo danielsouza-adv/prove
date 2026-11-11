@@ -3,11 +3,11 @@
 **D'Souza Advocacia Empresarial** · Dr. Daniel de Souza · OAB/DF 71.124
 
 - Projeto analisado: `acme-pagamentos`
-- Data da varredura: 2026-10-19
+- Data da varredura: 2026-11-11
 - Versão da ferramenta: PROVE 2.0.0
 - Modelo de distribuição: SaaS / acesso pela rede, sem entrega de software ao cliente
 - Commit analisado: `4020f76a0f07` (main)
-- Hash dos dados (SHA-256): `c0aef308ec953c93915ee64805f4bc756e8444b89541ab6ea34887ffda331ca3`
+- Hash dos dados (SHA-256): `af27cc9668f9f3444a4e95d744357658409ad18465dca26b5b9f2c8d64b52078`
 
 ---
 
@@ -176,8 +176,8 @@ Política informada: Claude (Anthropic) · vigente desde 2024-01-01
 - Commit: `4020f76a0f07d7b32f6ad795e7725eb625d5d02f` · branch: main · remoto: —
 - Alterações não commitadas no momento da varredura: 0
 - Clone raso: não
-- SHA-256 da ferramenta: `27e5a7668d03d613a930e5ddf40ac1ed7ea35a4ab5edda34770e2d6a483202b2`
-- SHA-256 dos dados: `c0aef308ec953c93915ee64805f4bc756e8444b89541ab6ea34887ffda331ca3`
+- SHA-256 da ferramenta: `e6fd79e4aeeb5ffd5c17bc7450daa84225b1f21b8bcad9735bf90214a189e1cd`
+- SHA-256 dos dados: `af27cc9668f9f3444a4e95d744357658409ad18465dca26b5b9f2c8d64b52078`
 - Verificar: `python3 prove_scan.py --verificar <pasta-da-saida>`
 
 > A verificação mostra se a saída foi alterada depois de gerada. Ela não prova que a varredura rodou sobre o repositório real: para isso, a varredura pode ser feita em sessão acompanhada ou na integração contínua do cliente.
@@ -195,4 +195,4 @@ Política informada: Claude (Anthropic) · vigente desde 2024-01-01
 
 Os achados indicam onde a cadeia de titularidade precisa ser verificada em documento: contrato de cessão de direitos patrimoniais de cada contribuidor, vigência à época da contribuição, política de uso de IA e compatibilidade das licenças com o modelo de distribuição do produto.
 
-**Laudo de Proveniência**: análise documental, parecer e laudo assinado para apresentação a investidor, comprador ou contratante. danielssouza.com | (61) 98379-0033
+**Laudo de Proveniência**: análise documental, parecer e laudo assinado para apresentação a investidor, comprador ou contratante. danielssouza.com | (61) 99878-0564
