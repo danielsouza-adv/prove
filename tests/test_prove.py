@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Testes do PROVE. Rodar com:  python3 -m unittest discover -s tests -v"""
 
+import contextlib
+import io
 import json
 import os
 import shutil
@@ -362,6 +364,29 @@ class TestCenarios(unittest.TestCase):
         self.assertEqual(len(dados["inpi"]["sha512"]), 128)
         self.assertTrue(os.path.isfile(os.path.join(saida, "prove_inpi_fonte.zip")))
         self.assertEqual(p.verificar(saida), 0)
+
+    def test_inpi_avisa_que_o_zip_leva_codigo_fonte(self):
+        """O zip é o único arquivo de saída com código-fonte: precisa aparecer na tela."""
+        r = self.repo
+        r.commit("Ana", "ana@empresa.com.br", "2024-01-10", {"a.py": linhas(10)})
+        saida = tempfile.mkdtemp(prefix="prove_saida_")
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            p.main([r.dir, "--saida", saida, "--inpi"])
+        tela = buf.getvalue()
+        self.assertIn("prove_inpi_fonte.zip", tela.split("Gerados em")[1])
+        self.assertIn("código-fonte completo", tela)
+        self.assertIn("não envie junto com o relatório", tela)
+
+    def test_sem_inpi_nao_ha_zip_nem_aviso(self):
+        r = self.repo
+        r.commit("Ana", "ana@empresa.com.br", "2024-01-10", {"a.py": linhas(10)})
+        saida = tempfile.mkdtemp(prefix="prove_saida_")
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            p.main([r.dir, "--saida", saida])
+        self.assertNotIn("código-fonte completo", buf.getvalue())
+        self.assertFalse(os.path.isfile(os.path.join(saida, "prove_inpi_fonte.zip")))
 
     def test_falhar_em_para_ci(self):
         vazio = tempfile.mkdtemp()

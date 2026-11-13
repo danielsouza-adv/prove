@@ -22,6 +22,7 @@ Opções principais (python3 prove_scan.py --ajuda mostra todas):
     --sbom arquivo.json                      importa SBOM CycloneDX/SPDX
     --anonimizar                             troca nomes por códigos (LGPD)
     --inpi                                   prepara pacote e hash para registro no INPI
+                                             (gera zip COM o código-fonte; não compartilhe)
     --verificar pasta-ou-json                confere se a saída foi alterada
 
 Saída: prove_relatorio.md, prove_dados.json, prove_sbom.cdx.json e
@@ -2980,7 +2981,9 @@ def argumentos(argv):
                    help="prefixos de pacotes que não devem ser consultados online (ex.: @minhaempresa/,minhaempresa-)")
     p.add_argument("--sbom", metavar="JSON", action="append", help="importa SBOM CycloneDX ou SPDX (pode repetir)")
     p.add_argument("--anonimizar", action="store_true", help="substitui nomes de pessoas por códigos no relatório")
-    p.add_argument("--inpi", action="store_true", help="gera pacote zip do código e hash SHA-512 para registro no INPI")
+    p.add_argument("--inpi", action="store_true",
+                   help="gera pacote zip COM o código-fonte e hash SHA-512 para registro no INPI; "
+                        "o zip não deve ser compartilhado junto com o relatório")
     p.add_argument("--falhar-em", choices=("vermelho", "amarelo"),
                    help="retorna código 2 se o resultado for desta cor ou pior (uso em integração contínua)")
     p.add_argument("--verificar", metavar="PASTA_OU_JSON", help="confere se uma saída do PROVE foi alterada e sai")
@@ -3119,7 +3122,15 @@ def main(argv=None):
         len(deps), len(git.get("identidades") or []) if git.get("disponivel") else "—", len(ia["ferramentas"])))
     print("Resultado: %s · %d crítico(s), %d atenção, %d informativo(s)" % (
         dados["semaforo"].upper(), sev["vermelho"], sev["amarelo"], sev["info"]))
-    print("Gerados em %s: %s, prove_hashes.sha256" % (saida, ", ".join(saidas)))
+    gerados = list(saidas) + ["prove_hashes.sha256"]
+    if dados.get("inpi"):
+        gerados.append(dados["inpi"]["arquivo"])
+    print("Gerados em %s: %s" % (saida, ", ".join(gerados)))
+    if dados.get("inpi"):
+        # O zip do INPI é o único arquivo gerado que contém código-fonte. Precisa ser anunciado:
+        # sem isso, o cliente compartilha a pasta de saída sem saber o que está mandando junto.
+        print("ATENÇÃO: %s contém o código-fonte completo do projeto. Ele serve ao registro no INPI; "
+              "não envie junto com o relatório nem compartilhe com terceiros." % dados["inpi"]["arquivo"])
     if saida == raiz or saida.startswith(raiz + os.sep):
         print("Atenção: a saída está dentro do repositório analisado. Não faça commit desses arquivos.")
 
