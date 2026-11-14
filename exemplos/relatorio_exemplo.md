@@ -3,11 +3,11 @@
 **D'Souza Advocacia Empresarial** · Dr. Daniel de Souza · OAB/DF 71.124
 
 - Projeto analisado: `acme-pagamentos`
-- Data da varredura: 2026-10-19
+- Data da varredura: 2026-11-13
 - Versão da ferramenta: PROVE 2.0.0
 - Modelo de distribuição: SaaS / acesso pela rede, sem entrega de software ao cliente
 - Commit analisado: `4020f76a0f07` (main)
-- Hash dos dados (SHA-256): `c0aef308ec953c93915ee64805f4bc756e8444b89541ab6ea34887ffda331ca3`
+- Hash dos dados (SHA-256): `33586d408c7a7d27ae1bb8056bb9f16fc642c94c08e1375eb601e3ae7e7b59e1`
 
 ---
 
@@ -176,8 +176,8 @@ Política informada: Claude (Anthropic) · vigente desde 2024-01-01
 - Commit: `4020f76a0f07d7b32f6ad795e7725eb625d5d02f` · branch: main · remoto: —
 - Alterações não commitadas no momento da varredura: 0
 - Clone raso: não
-- SHA-256 da ferramenta: `27e5a7668d03d613a930e5ddf40ac1ed7ea35a4ab5edda34770e2d6a483202b2`
-- SHA-256 dos dados: `c0aef308ec953c93915ee64805f4bc756e8444b89541ab6ea34887ffda331ca3`
+- SHA-256 da ferramenta: `75afebb4108b33874784f01a3ce3b98dbcda6186966dc6f8baddb4f62fe7d6d7`
+- SHA-256 dos dados: `33586d408c7a7d27ae1bb8056bb9f16fc642c94c08e1375eb601e3ae7e7b59e1`
 - Verificar: `python3 prove_scan.py --verificar <pasta-da-saida>`
 
 > A verificação mostra se a saída foi alterada depois de gerada. Ela não prova que a varredura rodou sobre o repositório real: para isso, a varredura pode ser feita em sessão acompanhada ou na integração contínua do cliente.

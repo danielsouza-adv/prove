@@ -17,6 +17,8 @@ O PROVE roda no seu computador e, em poucos segundos, mostra onde a cadeia de ti
 
 O PROVE lê **apenas** arquivos de manifesto (`package.json`, `requirements.txt`, `go.mod`…), metadados de licença dos pacotes de terceiros, o histórico do Git e os **nomes** de arquivos de configuração. Ele não abre os arquivos de código-fonte da aplicação e não envia nada a ninguém. Você decide o que compartilhar: o relatório gerado.
 
+A única opção que grava código-fonte é `--inpi`, e só quando você a liga: ela empacota o código para o registro no INPI, avisa na tela e documenta o arquivo abaixo.
+
 A única opção que acessa a internet é `--online`, que você liga explicitamente. Ela envia apenas o nome e a versão de cada pacote público para os registros oficiais (npm, PyPI etc.). Pacotes do seu próprio escopo ficam de fora, e você pode excluir outros com `--online-excluir`.
 
 ## Como usar
@@ -52,7 +54,7 @@ python3 prove_scan.py --verificar pasta-da-saida
 | `--online-excluir PREFIXOS` | Prefixos de pacotes que nunca devem ser consultados. |
 | `--sbom ARQ.json` | Importa SBOM CycloneDX ou SPDX de outra ferramenta (Syft, Trivy, FOSSA, Snyk…). |
 | `--anonimizar` | Troca nomes por códigos (C01, C02…) para compartilhar o relatório. |
-| `--inpi` | Gera o pacote do código e o hash SHA-512 para registro de programa de computador. |
+| `--inpi` | Gera o pacote do código e o hash SHA-512 para registro de programa de computador. **O zip contém o código-fonte** — veja o aviso abaixo. |
 | `--saida PASTA` | Onde gravar os resultados. |
 | `--falhar-em vermelho` | Retorna código 2 se o resultado for vermelho (uso em CI). |
 
@@ -64,6 +66,13 @@ python3 prove_scan.py --verificar pasta-da-saida
 | `prove_dados.json` | Os mesmos dados em formato estruturado, com hash de integridade. |
 | `prove_sbom.cdx.json` | SBOM CycloneDX 1.5. |
 | `prove_hashes.sha256` | Hash de cada arquivo (confira com `--verificar` ou `sha256sum -c`). |
+| `prove_inpi_fonte.zip` | **Só com `--inpi`.** Cópia do código-fonte do projeto, exigida pelo registro no INPI. |
+
+> **O zip do INPI é a única exceção à regra de que nada do seu código sai nos arquivos gerados.**
+> Ele existe porque o registro de programa de computador exige o código. Fica na pasta de saída e é
+> anunciado na tela ao fim da execução. Não o envie junto com o relatório nem o compartilhe com
+> terceiros: use `--inpi` apenas quando for de fato registrar, e de preferência com `--saida` numa
+> pasta separada.
 
 Veja um relatório completo, gerado sobre um projeto fictício, em [`exemplos/relatorio_exemplo.md`](exemplos/relatorio_exemplo.md).
 
